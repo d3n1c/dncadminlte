@@ -191,8 +191,8 @@ function dncadminlte_process_page(&$variables) {
   if (!empty($variables['tabs'])) {
     $dump = [];
     $dump['tabs'] = $variables['tabs'];
-    $dump += $variables['page']['content']['system_main'];
-    $variables['page']['content']['system_main'] = $dump;
+    $dump += $variables['page']['content'];
+    $variables['page']['content'] = $dump;
     unset ($variables['tabs'], $dump);
   }
   if (!empty($variables['action_links'])) {
