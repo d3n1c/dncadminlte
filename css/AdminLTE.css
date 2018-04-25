@@ -1086,6 +1086,7 @@ a:focus {
   border: 3px solid;
   border-color: transparent;
   border-color: rgba(255, 255, 255, 0.2);
+  margin: auto;
 }
 .navbar-nav > .user-menu > .dropdown-menu > li.user-header > p {
   z-index: 5;
