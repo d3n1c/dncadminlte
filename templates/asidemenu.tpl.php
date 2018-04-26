@@ -16,8 +16,8 @@
        <?php include_once $themepath . '/examples/asidemenu.expl'; ?>
       <?php } else { ?>
         <!-- Settings tab content -->
-        <?php if (!empty($page['sidebar_second'])) { ?>
-          <div class="tab-pane" id="control-sidebar-home-tab">
+        <div class="tab-pane" id="control-sidebar-home-tab">
+          <?php if (!empty($page['sidebar_second'])) { ?>
             <?php foreach ($page['sidebar_second'] as $keys => $values) { ?>
               <?php if (empty($values['#block'])) { continue; } ?>
               <?php if (!empty($values['#block']->subject)) { ?>
@@ -35,8 +35,10 @@
               </div>
               <hr class="mx-3 my-0">
             <?php } ?>
-          </div>
-        <?php } ?>
+          <?php } else { ?>
+              &nbsp;
+          <?php } ?>
+        </div>
       <?php } ?>
       <!-- /.tab-pane -->
     </div>
