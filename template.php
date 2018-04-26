@@ -233,7 +233,7 @@ function dncadminlte_sidebar_first_manipulation(array $items = []) {
     }
   
     foreach ($values as $key => $value) {
-      if (!ctype_digit($key)) {
+      if (!is_numeric($key)) {
         continue;
       }
       if (is_array($value) && !empty($value['#theme'])) {
