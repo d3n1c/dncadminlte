@@ -190,8 +190,6 @@ function dncadminlte_process_page(&$variables) {
     $variables['page']['content']['system_main'] = $dump;
     unset ($variables['action_links'], $dump);
   }
-//  echo htmlentities($variables['page']['content']['system_main']['main']['#markup']);
-//  echo '<pre>'; print_r($variables); echo '</pre>'; exit;
 }
 
 function dncadminlte_html_head_alter(&$head_elements) {
