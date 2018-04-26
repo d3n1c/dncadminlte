@@ -59,7 +59,7 @@
 
                         <p>
                           <?php echo $auth_user['name']; ?>
-                          <small><?php echo t('Member since @month', ['@month' => dncsystem_date('F Y', $auth_user['created'])]); ?></small>
+                          <small><?php echo t('Member since @month', ['@month' => date('F Y', $auth_user['created'])]); ?></small>
                         </p>
                       </li>
                       <!-- Menu Footer-->
