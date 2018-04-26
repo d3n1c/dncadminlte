@@ -31,10 +31,6 @@ function dncadminlte_preprocess_html(&$variables) {
     'scope' => 'footer',
     'weight' => -9,
   ));
-  drupal_add_js(path_to_theme() . '/vendors/bootstrap/js/bootstrap.min.js', array(
-    'scope' => 'footer',
-    'weight' => -8,
-  ));
   drupal_add_js(path_to_theme() . '/vendors/raphael/raphael.min.js', array(
     'scope' => 'footer',
     'weight' => 10,
@@ -79,14 +75,6 @@ function dncadminlte_preprocess_html(&$variables) {
     'scope' => 'footer',
     'weight' => 150,
   ));
-  
-  if (empty($_GET['q']) || !preg_match('/transaction$/', $_GET['q'])) {
-    // recall default jquery and bootstrap js
-    drupal_add_js(libraries_get_path('bootstrap') . '/dist/js/bootstrap.min.js', array(
-      'scope' => 'footer',
-      'weight' => 170,
-    ));
-  }
   
   if (theme_get_setting('lte_examples')) {
     drupal_add_css(path_to_theme() . '/vendors/morris.js/morris.min.css');
@@ -320,3 +308,7 @@ function dncadminlte_breadcrumb($variables) {
   return $output;
 }
 
+function dncadminlte_js_alter(&$js) {
+  $bootstrap_del = drupal_get_path('theme', 'bootstrap') . '/js/bootstrap.js';
+  unset ($js[$bootstrap_del], $bootstrap_del);
+}
