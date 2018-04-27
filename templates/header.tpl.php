@@ -65,10 +65,10 @@
                       <!-- Menu Footer-->
                       <li class="user-footer">
                         <div class="pull-left">
-                          <a href="<?php echo base_path() . 'user'; ?>" class="btn btn-default btn-flat">Profile</a>
+                          <a href="<?php echo (!empty($cleanurl) ? base_path() : '?q=') . 'user'; ?>" class="btn btn-default btn-flat">Profile</a>
                         </div>
                         <div class="pull-right">
-                          <a href="<?php echo base_path() . 'user/logout'; ?>" class="btn btn-default btn-flat">Sign out</a>
+                          <a href="<?php echo (!empty($cleanurl) ? base_path() : '?q=') . 'user/logout'; ?>" class="btn btn-default btn-flat">Sign out</a>
                         </div>
                       </li>
                     </ul>

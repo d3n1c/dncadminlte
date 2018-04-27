@@ -190,6 +190,8 @@ function dncadminlte_process_page(&$variables) {
     $variables['page']['content']['system_main'] = $dump;
     unset ($variables['action_links'], $dump);
   }
+  
+  $variables['cleanurl'] = variable_get('clean_url', 0);
 }
 
 function dncadminlte_html_head_alter(&$head_elements) {
@@ -211,6 +213,8 @@ function dncadminlte_sidebar_first_manipulation(array $items = []) {
     return $result;
   }
   
+  $clearurl = variable_get('clean_url', 0);
+  
   foreach ($items as $keys => $values) {
     if (!is_array($values)) {
       continue;
@@ -226,7 +230,7 @@ function dncadminlte_sidebar_first_manipulation(array $items = []) {
           $result[$keys]['#children'] = dncadminlte_sidebar_first_manipulation($values['#below']);
         }
         else {
-          $result[$keys]['#href'] = (preg_match('/^http/i', $values['#href']) ? NULL : base_path()) . ($values['#href'] == '<front>' ? NULL : $values['#href']);
+          $result[$keys]['#href'] = (preg_match('/^http/i', $values['#href']) ? NULL : (!empty($clearurl) && !empty($values['#href']) && $values['#href'] != '<front>' ? base_path() : '?q=')) . ($values['#href'] == '<front>' ? NULL : $values['#href']);
         }
       }
       continue;
@@ -250,7 +254,7 @@ function dncadminlte_sidebar_first_manipulation(array $items = []) {
             $result[$value['#original_link']['menu_name']][$key]['#children'] = dncadminlte_sidebar_first_manipulation($value['#below']);
           }
           else {
-            $result[$value['#original_link']['menu_name']][$key]['#href'] = (preg_match('/^http/i', $value['#href']) ? NULL : base_path()) . ($value['#href'] == '<front>' ? NULL : $value['#href']);
+            $result[$value['#original_link']['menu_name']][$key]['#href'] = (preg_match('/^http/i', $value['#href']) ? NULL : (!empty($clearurl) && !empty($values['#href']) && $values['#href'] != '<front>' ? base_path() : '?q=')) . ($value['#href'] == '<front>' ? NULL : $value['#href']);
           }
         }
         else {
@@ -262,6 +266,8 @@ function dncadminlte_sidebar_first_manipulation(array $items = []) {
       }
     }
   }
+  unset ($clearurl);
+  
   return $result;
 }
 
