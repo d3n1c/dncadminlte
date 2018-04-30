@@ -3,6 +3,15 @@
   <?php } else { ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+      <?php if (!empty($messages)): ?>
+        <?php print $messages; ?>
+      <?php endif; ?>
+      <?php if (!empty($tabs)): ?>
+        <?php print render($tabs); ?>
+      <?php endif; ?>
+      <?php if (!empty($page['help'])): ?>
+        <?php print render($page['help']); ?>
+      <?php endif; ?>
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -30,13 +39,10 @@
 
     <!-- Main content -->
     <section class="content">
-<!--      <div class="box">
-        <div class="box-header">
-        </div>
-        <div class="box-body">-->
-            <?php print render($page['content']); ?>
-<!--        </div>
-      </div>-->
+      <?php if (!empty($action_links)): ?>
+        <ul class="action-links"><?php print render($action_links); ?></ul>
+      <?php endif; ?>
+      <?php print render($page['content']); ?>
     </section>
     <!-- /.content -->
   </div>

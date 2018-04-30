@@ -176,21 +176,6 @@ function dncadminlte_process_page(&$variables) {
     $variables['title_suffix']['add_or_remove_shortcut']['#weight'] = -100;
   }
   
-  if (!empty($variables['tabs'])) {
-    $dump = [];
-    $dump['tabs'] = $variables['tabs'];
-    $dump += $variables['page']['content'];
-    $variables['page']['content'] = $dump;
-    unset ($variables['tabs'], $dump);
-  }
-  if (!empty($variables['action_links'])) {
-    $dump = [];
-    $dump['action_links'] = $variables['action_links'];
-    $dump += $variables['page']['content']['system_main'];
-    $variables['page']['content']['system_main'] = $dump;
-    unset ($variables['action_links'], $dump);
-  }
-  
   $variables['cleanurl'] = variable_get('clean_url', 0);
 }
 
